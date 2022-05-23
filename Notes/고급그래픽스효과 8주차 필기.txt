@@ -1,0 +1,78 @@
+고급그래픽스효과 8주차 필기
+
+#Lecture 6_0
+■ 파티클 개요
+- 물체 충돌, 폭발, 연기, 불, 물, 물보라, 눈보라, ...
+
+■ 파티클 개요 - 스프라이트 기반
+- 항상 카메라 쪽을 보고 있기 때문에 평면으로도 입체적인 효과를 낼 수 있음
+- 비교적 적은 리소스 소모
+=> RadialGradientExponential 노드를 이용하여 원형을 만들 수 있다.
+=> SPRITE 기반의 파티클 시스템은 Blending이 켜져야 한다.
+=> 머터리얼 탭의 Blend Mode를 Translucent로 설정할 것
+=> 빛을 발산하는 파티클의 경우 머터리얼 탭의 Shading Model을 Ulit으로 설정할 것
+
+■ 파티클 개요 - 메쉬 기반
+- 실제 메쉬가 각 파티클을 이룸
+- 메쉬이 복잡도에 따라 퍼포먼스가 크게 요동침
+- 정밀한 파티클 표현이 필요할 경우 사용
+
+■ Cascade 파티클 시스템
+- 파티클은 시작(위치, 크기)와 생존 시간이 필수적으로 존재해야 함
+- 이미터는 디폴트가 스프라이트 파티클임
+- Required에서 적용중인 메터리얼을 볼 수 있다.
+- Spawn에서 초당 생성되는 파티클 수(Constant)를 제어할 수 있다.
+
+Spawn - Distribution에서의 Constatnt와 Uniform의 차이점?
+- Constant : 설정한 값
+- Uniform : 범위 내의 값
+
+■ 실습: Cascade 파티클 시스템
+- 머터리얼 적용
+- 속도 적용
+- 가속도 적용
+- 사이즈 적용
+- 컬러 적용
+
+
+
+#Lecture 7_0
+■ 실습: Cascade 파티클 시스템(계속)
+- 머터리얼 적용
+- 속도 적용
+- 가속도 적용
+- 사이즈 적용
+- 컬러 적용
+
+=> 컬러는 흰색인데 왜 붉게 나오는가? 결국 무슨 짓을 하더라도 출력은 머터리얼의 색상을 따른다!!
+=> 파티클 시스템과 머터리얼 간의 상관관계를 파악할 필요가 있음
+=> 머터리얼에서 Particle Color(외부입력) 노드를 활용
+=> Alpha 값을 LifeTime에 따라 증감하려면 Init Color가 아닌 Color Over Life를 사용한다!
+=> 그러나, 알파 값 역시 머터리얼의 노드의 영향을 받는다.
+
+■ Cascade 파티클 시스템: 모듈
+이미터에 배치하여 다양한 기능 부여(per Shader)
+- 움직임, 라이팅, 등등...
+
+필수 모듈
+- Required, Spawn
+- 그 외 물체 특성을 정의하기 위한 세 가지: 
+
+Required의 ScreenAllignment
+- PSA Velocity: 파티클이 속도에 따라 늘어남(Size By Speed 모듈 필요)
+
+각 파티클을 Actor List에 넣어 Actor 간 충돌 처리 수행
+- 타 Actor로 물리적 영향을 미칠 수 있음
+
+Actor는 화면에 배치되는 모든 것들을 의미
+=> 정밀한 충돌 가능, 이벤트(Overlap, Collision, ...) 실행 가능
+=> CPU에서 위치, 충돌 등이 계산됨
+
+■ 실습
+Actor Collision 추가
+- 옵션 조절
+
+Actor 간 충돌 처리 결과 확인
+
+숙제: Curve Editor를 활용하여 Color Over Life 조정해 보기
+(★ 꼭 해보세요 시험에 나옵니다!)`
