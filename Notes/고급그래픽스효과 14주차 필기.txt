@@ -1,0 +1,40 @@
+고급그래픽스효과 14주차 필기
+
+#Lecture 8_2
+■ Ribbon Type Data
+- Emitter가 2개 존재
+- Beam 머터리얼과 유사
+
+- Source Particle을 따라 리본을 형성함
+
+두개의 Emitter 필요
+- Source Emitter
+- Ribbon Emitter
+
+- Ribbon의 경우 Spawn PerUint 모듈을 이용한다. 이때, 소스탭의 Source Method를 PET2SRCM Particle로 설정하고, Source Name은 Ribbon Source Emitter의 이름으로 설정해주어야 한다.
+- Spawn PerUinit 모듈을 사용할 경우, 기존의 Spawn 모듈의 Constant 값을 0으로 설정해주어야 한다.
+
+
+
+#Lecture 8_3
+■ AnimTrail Type Data
+- Animation Skeleton을 기준으로 Trail을 만들어 줌
+- 잔상이 남는 효과 등에 사용
+=> Ribbon과 유사
+
+=> AnimTrail Type Data는 Cascade 파티클 시스템 내에서 확인이 어렵다.
+=> 애니메이션 창에서 노티파이 → 노티파이 추가 → Trail
+=> Trail은 Initial Velocity 모듈을 제거하자!
+
+=> Two Sided를 켜주어야 한다.
+
+■ 파티클 파라메터
+- Dynamic Parameter 노드
+- 파티클 시스템과 연동되는 변수
+
+■ 실습 : Skeletal 메시와 연동
+- (그림 참고)
+- Mesh의 Vertex를 Particle의 시작 위치로 설정
+=> Location 모듈에서 Skel Vert/Surf Location으로 생성
+=> 메쉬 모양을 형성하며 파티클만 떨어지게 하려면, 모델의 머터리얼 중 오파시티 값을 0으로 설정
+

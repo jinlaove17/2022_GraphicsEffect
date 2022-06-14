@@ -1,0 +1,18 @@
+고급그래픽스효과 13주차 필기
+
+#Lecture 8_1
+■ Beam Type Data
+- (그림 참고)
+- 휘게하려면 중간 점들이 필요함
+- 중간중간 점들에 노이즈 추가
+
+=> Source와 Target 모듈을 이용한다.
+=> Particle Color에 Alpha 값이 Color Over Life 모듈로 인해서 변하고 있기 때문에 빔이 깜빡이게 된다.
+=> Beam Data 모듈에서 Interpolation Points를 조절하여 중간점을 추가한다.
+=> Source와 Target에서 Tangent 값을 조절하여, 휘게 할 수 있다. 이때, Source Tangent Method를 User Set으로 설정해주어야 한다!
+=> Tangent 값을 설정하게 되면, 파티클이 꼬이는 경우가 생기는데 이 경우에 뒷면이 노출되는 면이 생기기 때문에 컬링이 된다. 그렇기 때문에 머터리얼에서 TwoSided를 켜주어야 한다.
+=> Noise를 추가할 경우, Velocity 모듈은 제거하자!
+=> Noise의 Frequency는 최소 Interpolation 포인트의 절반이 되어야 한다.
+=> Source와 Target 모듈의 Source/Target Method 탭을 Actor로 변경하고, 연결 할 Actor의 인스턴스 파라미터를 이용하여, 액터 간 빔을 이을 수 있다.
+
+=> 숙제: 탄젠트 방향을 잘 조절하면 꼬이지 않게 할 수 있지 않을까??
